@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - FarmVest</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="glass-background">
+
+  <div class="form-container">
+    <h2>🔐 লগইন করুন</h2>
+    <p class="warning">⚠️ যে মোবাইল দিয়ে রেজিস্ট্রেশন করবেন, শুধু সেই মোবাইল দিয়েই লগইন হবে।</p>
+    <form onsubmit="loginUser(event)">
+      <input type="email" id="email" placeholder="📧 ইমেইল" required />
+      <input type="password" id="password" placeholder="🔑 পাসওয়ার্ড" required />
+      <button type="submit">🚀 লগইন</button>
+    </form>
+    <p class="link">অ্যাকাউন্ট নেই? <a href="register.html">রেজিস্টার করুন</a></p>
+  </div>
+
+  <script>
+    function loginUser(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        localStorage.setItem("loggedInUser", email);
+        alert("✅ লগইন সফল!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("❌ ভুল ইমেইল বা পাসওয়ার্ড");
+      }
+    }
+  </script>
+</body>
+</html>
