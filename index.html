@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FramVest - স্বাগতম</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      animation: fadeInDown 1.2s ease-out;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      max-width: 600px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .register-btn {
+      margin-top: 40px;
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      background: #00c853;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      animation: fadeInUp 2s ease-out;
+    }
+
+    .register-btn:hover {
+      background: #00a846;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 FramVest এ আপনাকে স্বাগতম!</h1>
+  <p>এটি একটি ফার্ম-ভিত্তিক ইনভেস্টমেন্ট প্ল্যাটফর্ম, যেখানে আপনি মুরগি, গরু, ছাগল ইত্যাদি প্ল্যানে বিনিয়োগ করে লাভ পেতে পারেন প্রতিদিন।</p>
+  <button class="register-btn" onclick="window.location.href='register.html'">👉 রেজিস্ট্রেশন করুন</button>
+</body>
+</html>
