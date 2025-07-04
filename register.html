@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register - FarmVest</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="glass-background">
+
+  <div class="form-container">
+    <h2>📝 রেজিস্ট্রেশন করুন</h2>
+    <p class="warning">⚠️ যে মোবাইল দিয়ে রেজিস্ট্রেশন করবেন, শুধু সেই মোবাইল দিয়েই লগইন হবে।</p>
+    <form onsubmit="registerUser(event)">
+      <input type="text" id="firstName" placeholder="👤 নাম" required />
+      <input type="email" id="email" placeholder="📧 ইমেইল" required />
+      <input type="password" id="password" placeholder="🔑 পাসওয়ার্ড" required />
+      <input type="password" id="confirmPassword" placeholder="🔒 কনফার্ম পাসওয়ার্ড" required />
+      <button type="submit">✅ রেজিস্টার</button>
+    </form>
+    <p class="link">ইতোমধ্যে অ্যাকাউন্ট আছে? <a href="login.html">লগইন করুন</a></p>
+  </div>
+
+  <script>
+    function registerUser(e) {
+      e.preventDefault();
+      const firstName = document.getElementById("firstName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("❌ পাসওয়ার্ড মিলছে না!");
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      if (users.find(u => u.email === email)) {
+        alert("⚠️ এই ইমেইল দিয়ে ইতিমধ্যে রেজিস্ট্রেশন হয়েছে!");
+        return;
+      }
+
+      users.push({ firstName, email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("✅ রেজিস্ট্রেশন সফল! এখন লগইন করুন।");
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>
