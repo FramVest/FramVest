@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📊 Dashboard - FarmVest</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .balance-box {
+      font-size: 18px;
+      background: #e3f2fd;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      color: #0277bd;
+      text-align: center;
+    }
+    .plans, .menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .plan-card {
+      background: #f1f8e9;
+      padding: 15px;
+      border-left: 6px solid #66bb6a;
+      border-radius: 10px;
+    }
+    .plan-card h4 {
+      margin: 0;
+      color: #33691e;
+    }
+    .plan-card p {
+      margin: 5px 0;
+    }
+    .plan-card button, .menu-buttons button {
+      background: #00c853;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .plan-card button:hover, .menu-buttons button:hover {
+      background: #00b342;
+    }
+    .active-plans {
+      margin-top: 30px;
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .active-plan-card {
+      background: white;
+      border: 2px solid #00c853;
+      border-left: 6px solid #00c853;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #333;
+      transition: 0.3s;
+    }
+    .active-plan-card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body onload="initDashboard()">
+  <div class="container">
+    <h2>🐮 FarmVest ড্যাশবোর্ড</h2><div class="balance-box">
+  বর্তমান ব্যালেন্স: <span id="balance">৳0</span>
+</div>
+
+<h3>📦 ইনভেস্টমেন্ট প্ল্যান</h3>
+<div class="plans">
+  <div class="plan-card">
+    <h4>🐔 মুরগি প্ল্যান - ৳500</h4>
+    <p>প্রতি ২৪ ঘণ্টা ৳50 × ২০ দিন</p>
+    <button onclick="handleBuyPlan(500, 50, 20)">এই প্ল্যান কিনুন</button>
+  </div>
+  <div class="plan-card">
+    <h4>🐄 গরু প্ল্যান - ৳1000</h4>
+    <p>প্রতি ২৪ ঘণ্টা ৳110 × ২০ দিন</p>
+    <button onclick="handleBuyPlan(1000, 110, 20)">এই প্ল্যান কিনুন</button>
+  </div>
+  <div class="plan-card">
+    <h4>🐐 ছাগল প্ল্যান - ৳2000</h4>
+    <p>প্রতি ২৪ ঘণ্টা ৳230 × ২০ দিন</p>
+    <button onclick="handleBuyPlan(2000, 230, 20)">এই প্ল্যান কিনুন</button>
+  </div>
+  <div class="plan-card">
+    <h4>🐃 ষাঁড় প্ল্যান - ৳3000</h4>
+    <p>প্রতি ২৪ ঘণ্টা ৳350 × ২০ দিন</p>
+    <button onclick="handleBuyPlan(3000, 350, 20)">এই প্ল্যান কিনুন</button>
+  </div>
+  <div class="plan-card">
+    <h4>🐘 হাতি প্ল্যান - ৳10000</h4>
+    <p>প্রতি ২৪ ঘণ্টা ৳1200 × ২০ দিন</p>
+    <button onclick="handleBuyPlan(10000, 1200, 20)">এই প্ল্যান কিনুন</button>
+  </div>
+</div>
+
+<h3>✅ আপনার অ্যাক্টিভ প্ল্যান</h3>
+<div id="activePlansSection" class="active-plans"></div>
+
+<div class="menu-buttons" style="margin-top: 20px;">
+  <button onclick="window.location.href='redeem.html'">🎁 রিডিম কোড</button>
+  <button onclick="window.location.href='withdraw.html'">💸 উত্তোলন</button>
+  <button onclick="window.location.href='profile.html'">👤 প্রোফাইল</button>
+</div>
+
+  </div>  <script src="dashboard.js"></script></body>
+</html>
