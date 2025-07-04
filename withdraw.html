@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💸 Withdraw - FramVest</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #f8fafc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
+      min-height: 100vh;
+    }
+    .withdraw-container {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      width: 400px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .balance-display {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #1b262c;
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px 0;
+      font-weight: 600;
+      color: #333;
+      text-align: left;
+    }
+    select, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 14px 12px;
+      font-size: 16px;
+      margin-bottom: 12px;
+      border: 1.8px solid #ddd;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+    select:focus, input[type="text"]:focus, input[type="number"]:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #007bff;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 18px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .note {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="withdraw-container">
+    <div class="balance-display">
+      আপনার ব্যালেন্স: <span id="userBalance">৳0</span>
+    </div>
+
+    <label for="withdrawMethod">উত্তোলনের মাধ্যম নির্বাচন করুন</label>
+    <select id="withdrawMethod">
+      <option value="" disabled selected>-- মাধ্যম নির্বাচন করুন --</option>
+      <option value="bkash">বিকাশ</option>
+      <option value="nogod">নগদ</option>
+    </select>
+
+    <label for="mobileNumber">মোবাইল নম্বর লিখুন</label>
+    <input type="text" id="mobileNumber" placeholder="বিকাশ / নগদ নম্বর লিখুন" />
+
+    <label for="withdrawAmount">উত্তোলনের টাকা লিখুন (সর্বনিম্ন ৫০০)</label>
+    <input type="number" id="withdrawAmount" placeholder="৳৫০০ অথবা তার বেশি" min="500" />
+
+    <button onclick="processWithdraw()">উত্তোলন করুন</button>
+
+    <div class="note">
+      * উত্তোলনের জন্য বিকাশ অথবা নগদ মাধ্যম নির্বাচন করতে হবে।<br />
+      * মিনিমাম উত্তোলন: ৫০০ টাকা।
+    </div>
+  </div>
+
+  <script src="withdraw.js"></script>
+</body>
+</html>
