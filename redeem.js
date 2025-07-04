@@ -1,5 +1,3 @@
-// redeem.js
-
 const redeemCodes = {
   "FARM500-01": 500,
   "FARM500-02": 500,
@@ -38,16 +36,31 @@ function redeemNow() {
   }
 
   const user = JSON.parse(localStorage.getItem(email));
+  if (!user) {
+    alert("⚠️ ইউজার তথ্য পাওয়া যায়নি।");
+    return;
+  }
+
+  // আগে ব্যবহার করা কোড চেক
+  const usedCodes = JSON.parse(localStorage.getItem("usedRedeemCodes") || "[]");
+  if (usedCodes.includes(code)) {
+    alert("❌ এই কোডটি ইতিমধ্যে ব্যবহৃত হয়েছে!");
+    return;
+  }
 
   if (redeemCodes[code]) {
     const amount = redeemCodes[code];
     user.balance = (user.balance || 0) + amount;
     localStorage.setItem(email, JSON.stringify(user));
-    delete redeemCodes[code];
+
+    // কোড ব্যবহৃত হয়েছে এমন করে সেভ করো
+    usedCodes.push(code);
+    localStorage.setItem("usedRedeemCodes", JSON.stringify(usedCodes));
+
     document.getElementById("redeemCode").value = "";
     alert("✅ কোড সফলভাবে রিডিম হয়েছে! ব্যালেন্সে ৳" + amount + " যোগ হয়েছে।");
     window.location.href = "dashboard.html";
   } else {
-    alert("❌ ভুল কোড বা ইতিমধ্যে ব্যবহৃত হয়েছে।");
+    alert("❌ ভুল কোড!");
   }
 }
